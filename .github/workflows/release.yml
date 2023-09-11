@@ -22,7 +22,7 @@ jobs:
         id: get_version
         run: |
           echo "VER=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
-          GOVER="$(curl -sLf 'https://golang.org/VERSION?m=text')"
+          GOVER="$(curl -sLf 'https://golang.org/VERSION?m=text' | grep -o "go")"
           echo "GO_VERSION=${GOVER#go}" >> $GITHUB_OUTPUT
       - name: setup-go
         uses: actions/setup-go@v4
